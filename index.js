@@ -43,6 +43,17 @@ const run = async () => {
         const cursor = await data.toArray();
         res.send(cursor);
     });
+
+
+    //add korbo Places
+    
+    app.post("/allPlace", async (req, res) => {
+
+      const place = req.body;
+      const result =  await placeCollection.insertOne(place)
+      res.send(result)
+    
+  });
     
     
     app.get("/allPlace/:id", async(req, res) => {
@@ -51,6 +62,7 @@ const run = async () => {
         const place = await placeCollection.findOne(query)
         res.send(place)
     });
+
 
     //orders api
     app.get('/orders',async(req,res)=>{
