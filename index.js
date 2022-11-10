@@ -82,7 +82,7 @@ const run = async () => {
 
     const id = req.params.id;
     const query = {_id: ObjectId(id)};
-    const place = await orderCollection.findOne(query)
+    const place = await orderCollection.findOne(query);
     res.send(place)
     
    })
