@@ -92,9 +92,29 @@ const run = async () => {
         const result = await orderCollection.insertOne(order);
         res.send(result)
     })
+   
+    //Update
+    app.put('/orders/:id', async(req, res)=>{
+      const id = req.params.id;
+      const filter = {_id: ObjectId(id)};
+      const user = req.body;
+      const option = {upsert: true};
+      const updatedUser = {
+        $set: {
+          message: user.message
+        }
+      }
+   
+      const result = await orderCollection.updateOne(filter, updatedUser, option)
+      res.send(result)
+    })
+    
+
+
+
 
     // delete 
-    app.delete('orders/:id', async(req,res)=>{
+    app.delete('/orders/:id', async(req,res)=>{
 
         const id = req.params.id;
         const query = {_id: ObjectId(id)};
