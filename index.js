@@ -105,10 +105,6 @@ const run = async () => {
         }
       }
    
-      const result = await orderCollection.updateOne(filter, updatedUser, option)
-      res.send(result)
-    })
-    
 
 
 
